@@ -1,0 +1,134 @@
+// Font-face
+// Usage: @include font-face('Console', '../fonts/fontName'
+@mixin font-face($name, $path) {
+  @font-face {
+    font-family: $name;
+    src:  url($path + ".eot"); // gte IE9
+    src:  local("☺︎"), // Hack HTTP Request for IE
+          url($path + ".eot?#iefix") format("embedded-opentype"), // lt IE9
+          url($path + ".woff2") format("woff2"), // Super Modern
+          url($path + ".woff") format("woff"); // Modern
+  }
+}
+
+
+// Media query
+// Usage: @include mq(xs) { color: red; }
+@mixin mq($point, $type: min) {
+  @if map_has_key($breakpoints, $point) {
+    $width: map-get($breakpoints, $point);
+  }
+
+  @if $type == max { $width: $width - 1px; }
+
+  @media only screen and (#{$type}-width: $width) {
+    @content;
+  }
+}
+
+// smoothing
+// Usage: @include font-smooth()
+@mixin font-smooth {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+// ellipsis text
+// Usage: @include text-ellipsis()
+@mixin text-ellipsis {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+// clearfix
+// Usage @include clearfix()
+@mixin clearfix {
+  &:after, &:before {
+    content: " ";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+
+// opacity
+// Usage: @include opacity(.8)
+@mixin opacity($value) {
+  $ie: $value * (if($value > 1, 1, 100));
+  $other: $value / if($value > 1, 100, 1);
+  opacity: $other;
+  // Next for lt IE9
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$ie})";
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$ie});
+}
+
+
+//_____________________________________________________
+//                                              FLEXBOX
+@mixin flex() {
+  display: flex;
+  flex-wrap: wrap;
+  &.fluid {
+    margin-left: -1rem;
+    margin-right: -1rem;
+  }
+}
+
+
+// Vendor prefixes
+// Usage: css-prefix(transition, all .2s ease-in-out)
+@mixin css-prefix($property, $value) {
+  -webkit-#{$property}: $value;
+  -moz-#{$property}: $value;
+  #{$property}: $value;
+}
+
+
+// center
+// Usage: @include center()
+@mixin center($direction: $both) {
+  position: absolute;
+  $tranform: false;
+
+  @if ($direction == $both) {
+    top: 50%;
+    left: 50%;
+    $tranform: css-prefix(transform, translate(-50%, -50%));
+  } 
+  @if ($direction == $vertical) {
+    top: 50%;
+    $tranform: css-prefix(transform, translateY(-50%));
+  }
+  @if ($direction == $horizontal) {
+    left: 50%;
+    $tranform: css-prefix(transform, translateX(-50%));
+  }
+}
+
+// Keyframes for animation
+// Usage: @include keyframes(fade-out)
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes #{$animation-name} {
+      @content;
+  }
+  @-moz-keyframes #{$animation-name} {
+      @content;
+  }  
+  @keyframes #{$animation-name} {
+      @content;
+  }
+}
+
+
+// animation
+// Usage: @include animation('fade-out 5s 3')
+@mixin animation($str) {
+  @include css-prefix(animation, #{$str});  
+}

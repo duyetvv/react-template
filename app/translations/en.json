@@ -1,0 +1,10 @@
+{
+  "messages": {
+    "required": "{fieldName} is required.",
+    "email": "Your {fieldName} is invalid."
+  },
+  "fields": {
+    "userName": "User Name",
+    "email": "Email"
+  }
+}
