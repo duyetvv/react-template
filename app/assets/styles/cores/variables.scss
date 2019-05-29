@@ -1,45 +1,6 @@
-//___________________________________
-//                               FONT
-$font-family-sans-serif      : Verdana, Arial, sans-serif;
-$font-family-serif           : Georgia, "Times New Roman", Times, serif;
-// $font-family-KoburinaGoStd-W3: KoburinaGoStd-W3;
-
-$font-family-base            : $font-family-sans-serif;
-
-//___________________________________
-//                              COLOR
-$color-white: #ffffff;
-$off-white  : #f7f3ec;
-$light-gray : #cccccc;
-$color-black: #000;
-$black06    : rgba(0, 0, 0, 0.06);
-$brown      : #8a7149;
-$grey       : #888888;
-
-//___________________________________
-//                        BREAK POINT
-$screen: (
-  xs: 320px,
-  sm: 768px,
-  md: 992px,
-  lg: 1200px
-);
-
-
-//___________________________________
-//                               GRID
-$grid  : 12;
-$gutter: 10px;
-
-
-//___________________________________
-//                     DEFAULT VALUES
-$default-font          : $font-family-base;
-$default-font-size     : 40px;
-$small-font-size       : 32px;
-$default-line-height   : 40px;
-$fat-line-height       : 1.25;
-$default-letter-spacing: 0.8px;
-$default-border-width  : 2px;
-$default-bg-color      : $color-white;
-$default-color         : $color-black;
+@import './variables/grid.scss';
+@import './variables/fonts.scss';
+@import './variables/text.scss';
+@import './variables/color.scss';
+@import './variables/z-index.scss';
+@import './variables/directtion.scss';

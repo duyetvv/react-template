@@ -10,7 +10,7 @@
 // import { render } from 'react-testing-library';
 // import 'jest-dom/extend-expect'; // add some helpful assertions
 
-import AuthRouter from '../index';
+// import AuthRouter from '../index';
 
 describe('<AuthRouter />', () => {
   // it('Expect to not log errors in console', () => {

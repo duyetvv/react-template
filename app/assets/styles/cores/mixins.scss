@@ -1,88 +1,6 @@
-//_____________________________________________________
-//                                            FONT FACE
-@mixin font-face($name, $pathNotIncludeExt, $weight: normal, $style: normal) {
-  @font-face {
-    font: {
-      family: $name;
-      weight: $weight;
-      style: $style;
-    }
-    src: url($pathNotIncludeExt + ".eot"); // gte IE9
-    src: local("☺︎") // Hack HTTP Request for IE
-      ,  url($pathNotIncludeExt + ".eot?#iefix") format("embedded-opentype") // lt IE9
-      ,  url($pathNotIncludeExt + ".woff2") format("woff2") // Super Modern
-      ,  url($pathNotIncludeExt + ".woff") format("woff"); // Modern
-  }
-}
 
-
-//_____________________________________________________
-//                                            SMOOTHING
-@mixin font-smooth {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-
-
-//_____________________________________________________
-//                                             ELLIPSIS
-@mixin text-ellipsis {
-  max-width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-
-
-//_____________________________________________________
-//                                                RESET
-@mixin reset($level: 1) {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  @if $level == all {
-    font: {
-      family: inherit;
-      size: 1em;
-      weight: inherit;
-      style: inherit;
-    }
-    line-height: inherit;
-    vertical-align: baseline;
-    box-sizing: border-box;
-  }
-}
-
-
-
-//_____________________________________________________
-//                                             CLEARFIX
-@mixin clearfix {
-  &:after, &:before {
-    content: "";
-    display: table;
-  }
-
-  &:after {
-    clear: both;
-  }
-}
-
-
-
-//_____________________________________________________
-//                                              OPACITY
-@mixin opacity($value) {
-  $ie: $value * (if($value > 1, 1, 100));
-  $other: $value / if($value > 1, 100, 1);
-  opacity: $other;
-  // Next for lt IE9
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$ie})";
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$ie});
-}
+// opacity
+// Usage: @include opacity(.8)
 
 
 
@@ -95,4 +13,35 @@
     margin-left: -1rem;
     margin-right: -1rem;
   }
+}
+
+
+// Vendor prefixes
+// Usage: css-prefix(transition, all .2s ease-in-out)
+
+
+
+// center
+// Usage: @include center()
+
+
+// Keyframes for animation
+// Usage: @include keyframes(fade-out)
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes #{$animation-name} {
+      @content;
+  }
+  @-moz-keyframes #{$animation-name} {
+      @content;
+  }  
+  @keyframes #{$animation-name} {
+      @content;
+  }
+}
+
+
+// animation
+// Usage: @include animation('fade-out 5s 3')
+@mixin animation($str) {
+  @include css-prefix(animation, #{$str});  
 }

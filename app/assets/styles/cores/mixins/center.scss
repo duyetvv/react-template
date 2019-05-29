@@ -1,0 +1,18 @@
+@mixin center($direction: $both) {
+  position: absolute;
+  $tranform: false;
+
+  @if ($direction == $both) {
+    top: 50%;
+    left: 50%;
+    $tranform: css-prefix(transform, translate(-50%, -50%));
+  } 
+  @if ($direction == $vertical) {
+    top: 50%;
+    $tranform: css-prefix(transform, translateY(-50%));
+  }
+  @if ($direction == $horizontal) {
+    left: 50%;
+    $tranform: css-prefix(transform, translateX(-50%));
+  }
+}

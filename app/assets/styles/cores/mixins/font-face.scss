@@ -1,0 +1,10 @@
+@mixin font-face($name, $path) {
+  @font-face {
+    font-family: $name;
+    src:  url($path + ".eot"); // gte IE9
+    src:  local("☺︎"), // Hack HTTP Request for IE
+          url($path + ".eot?#iefix") format("embedded-opentype"), // lt IE9
+          url($path + ".woff2") format("woff2"), // Super Modern
+          url($path + ".woff") format("woff"); // Modern
+  }
+}

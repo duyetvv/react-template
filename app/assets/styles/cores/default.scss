@@ -1,8 +1,6 @@
 html {
-  font: {
-    family: $default-font;
-    size: $gutter;
-  }
+  font-family: $default-font-family;
+  font-size: $default-font-size;
   line-height: $default-line-height;
   letter-spacing: $default-letter-spacing;
   background-color: $default-bg-color;

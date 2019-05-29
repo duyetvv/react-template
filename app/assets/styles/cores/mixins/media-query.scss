@@ -1,0 +1,11 @@
+@mixin mq($point, $type: min) {
+  @if map_has_key($breakpoints, $point) {
+    $width: map-get($breakpoints, $point);
+  }
+
+  @if $type == max { $width: $width - 1px; }
+
+  @media only screen and (#{$type}-width: $width) {
+    @content;
+  }
+}

@@ -1,0 +1,4 @@
+@mixin animation($str) {
+  @include css-prefix(animation, #{$str});  
+}
+// @include animation('fade-out 5s infinite')

@@ -1,0 +1,8 @@
+@mixin opacity($value) {
+  $ie: $value * (if($value > 1, 1, 100));
+  $other: $value / if($value > 1, 100, 1);
+  opacity: $other;
+  // Next for lt IE9
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$ie})";
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$ie});
+}
