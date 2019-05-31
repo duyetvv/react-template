@@ -1,8 +1,9 @@
 import { i18n } from 'i18n';
-import { getLang } from 'helpers';
+// import { getLang } from 'helpers';
+import helpers from 'helpers';
 import { emailReg } from './regex';
 
-const lang = getLang();
+const lang = helpers.getLang();
 const { messagea, fields } = i18n[lang];
 
 const getValidateMessage = ({ fieldName, message }) =>

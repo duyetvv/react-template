@@ -5,10 +5,9 @@
  */
 
 import React, { memo } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
@@ -17,7 +16,7 @@ import { useInjectReducer } from 'utils/injectReducer';
 import makeSelectProductDetails from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import messages from './messages';
+// import messages from './messages';
 
 export function ProductDetails() {
   useInjectReducer({ key: 'productDetails', reducer });
@@ -29,14 +28,13 @@ export function ProductDetails() {
         <title>ProductDetails</title>
         <meta name="description" content="Description of ProductDetails" />
       </Helmet>
-      <FormattedMessage {...messages.header} />
       <h1>ProductDetails</h1>
     </div>
   );
 }
 
 ProductDetails.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  // dispatch: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({

@@ -51,7 +51,7 @@ export function ProductPage({ routes }) {
 
 ProductPage.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  routes: PropTypes.object,
+  routes: PropTypes.array,
 };
 
 const mapStateToProps = createStructuredSelector({

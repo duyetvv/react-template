@@ -1,9 +1,13 @@
 import { screenWidth, screenHeight } from './dimention';
 
-import getLang from './getLang';
+// import getLang from './getLang';
 
-export default {
+const getLang = () => document.documentElement.lang;
+
+const helpers = {
   screenHeight,
   screenWidth,
   getLang,
 };
+
+export default helpers;
